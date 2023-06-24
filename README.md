@@ -1,4 +1,4 @@
-##The steps for my Work:
+## The steps for my Work:
 
 
 1- Create laravel project ```composer create-project laravel/laravel:^9.0 exchangeRate```.
@@ -13,6 +13,7 @@
 ```    
     
 4- Install predis package ```composer require predis/predis```.
+
 5- Create two migrations file one for currencies table and the second for currency_rates table:
    ```
    php artisan make:migration create_currencies_table --create=currencies
@@ -59,6 +60,8 @@ php artisan make:test CurrencyExchangeRatesTest --unit
 php artisan test --filter CurrencyExchangeRatesTest
 ```
 17- The postman collection in the root directory to test the endpoint.
+
+18- I make integration with https://www.frankfurter.app to handle the functions.
 
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
