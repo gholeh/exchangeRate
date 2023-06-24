@@ -1,0 +1,51 @@
+{
+	"info": {
+		"_postman_id": "84904b74-0104-4d6f-9615-cd6e1dedf592",
+		"name": "ExchangeRate",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20074174"
+	},
+	"item": [
+		{
+			"name": "Exchange Rate",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8000/api/exchange-rate?base_currency=EUR&target_currencies=USD,PLN",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"exchange-rate"
+					],
+					"query": [
+						{
+							"key": "base_currency",
+							"value": "EUR"
+						},
+						{
+							"key": "target_currencies",
+							"value": "USD,PLN"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,3 +1,60 @@
+##The steps for my Work:
+1- Create laravel project ```composer create-project laravel/laravel:^9.0 exchangeRate```.
+2- Setup redis configuration inside database.php to change redis client value ```'client' => env('REDIS_CLIENT', 'predis')```.
+3- set three values in .env related to redis like that 
+    REDIS_HOST=localhost
+    CACHE_DRIVER=redis
+    SESSION_DRIVER=redis
+    
+4- Install predis package ```composer require predis/predis```.
+5- Create two migrations file one for currencies table and the second for currency_rates table:
+   ```
+   php artisan make:migration create_currencies_table --create=currencies
+   php artisan make:migration create_currency_rates_table --create=currency_rates
+   ```
+6- Create three Models and add the relations inside Currency and CurrencyRate Models:
+  ```
+    php artisan make:Model DefaultModel
+    php artisan make:Model Currency
+    php artisan make:Model CurrencyRate
+  ```
+7- Create service inside services directory class to handle all the Functions.
+8- Create Seeder to fetch the currencies from the thirdparty and fill the currencies table:
+  ```
+  php artisan make:seeder CurrencySeeder
+  ```
+9- Call the above seeder inside databaseSeeder.
+10- Run the Seeder command:
+  ```
+    php artisan db:seed
+  ```
+11-Create Console command for CurrencyExchangeRates and register the command inside the app/Console/Kernel.php :
+```
+php artisan make:command CurrencyExchangeRates
+```
+12- Create Controller for the Endpoint ExchangeRateController with logic related to it:
+```
+php artisan make:controller Api/ExchangeRateController
+```
+13- Create Custom Request for the Endpoint to write the logic for the vaildtion:
+```
+php artisan make:request Api/ExchangeRateRequest
+```
+14- add the route for the endpoint inside the api.php:
+```
+Route::get('exchange-rate',[ExchangeRateController::class,'index']);
+```
+15- Create Unit test to test the console command and the endpoint:
+```
+php artisan make:test CurrencyExchangeRatesTest --unit
+```
+16- To run the test:
+```
+php artisan test --filter CurrencyExchangeRatesTest
+```
+17- The postman collection in the root directory to test the endpoint.
+  
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
