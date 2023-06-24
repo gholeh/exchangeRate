@@ -77,6 +77,8 @@ class CurrencyExchangeService
 
     public function getExchangeRate($currency)
     {
+        if ($currency == 'EUR') return 1;
+
         return cache()->remember($currency,now()->addHour() ,function () use($currency){
                 return CurrencyRate::whereHas('currency', function($query) use($currency){
                     $query->where('symbol',$currency);
@@ -102,3 +104,4 @@ class CurrencyExchangeService
         return $targetExchangeRates;
     }
 }    
+
