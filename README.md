@@ -1,4 +1,6 @@
 ##The steps for my Work:
+
+
 1- Create laravel project ```composer create-project laravel/laravel:^9.0 exchangeRate```.
 2- Setup redis configuration inside database.php to change redis client value ```'client' => env('REDIS_CLIENT', 'predis')```.
 3- set three values in .env related to redis like that 
@@ -53,7 +55,7 @@ php artisan make:test CurrencyExchangeRatesTest --unit
 php artisan test --filter CurrencyExchangeRatesTest
 ```
 17- The postman collection in the root directory to test the endpoint.
-  
+
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
