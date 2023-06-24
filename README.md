@@ -2,11 +2,15 @@
 
 
 1- Create laravel project ```composer create-project laravel/laravel:^9.0 exchangeRate```.
+
 2- Setup redis configuration inside database.php to change redis client value ```'client' => env('REDIS_CLIENT', 'predis')```.
+
 3- set three values in .env related to redis like that 
+```   
     REDIS_HOST=localhost
     CACHE_DRIVER=redis
     SESSION_DRIVER=redis
+```    
     
 4- Install predis package ```composer require predis/predis```.
 5- Create two migrations file one for currencies table and the second for currency_rates table:
