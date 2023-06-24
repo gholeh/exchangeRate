@@ -4,6 +4,8 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Models\Currency;
+use App\Console\Commands\CurrencyExchangeRates;
 
 class Kernel extends ConsoleKernel
 {
@@ -15,7 +17,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
+        $currency = Currency::whereNot('symbol','EUR')->pluck('symbol')->toArray();
+        $schedule->command(CurrencyExchangeRates::class, array_merge(['EUR'],$currency))->everyMinute();//daily()->at('01:00');
     }
 
     /**
