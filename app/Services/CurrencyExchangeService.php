@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Log;
 use App\Models\Currency;
 use App\Models\CurrencyRate;
 use Carbon\Carbon;
+use Illuminate\Support\Collection;
 
 class CurrencyExchangeService
 {
@@ -17,14 +18,14 @@ class CurrencyExchangeService
         ]);
     }
 
-    public function fetchCurrencies()
+    public function fetchCurrencies(): Collection
     {
         try {
                 $response = $this->client->get('https://api.frankfurter.app/currencies');
 
                 $currencies = json_decode($response->getBody(), true);
                 
-                return $currencies;
+                return collect($currencies);
             } catch (\Exception $e) {
                Log::error($e);
                return response()->json(['error' => 'Something wrong with the thirdparty'], 500);
